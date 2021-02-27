@@ -6,6 +6,7 @@ const NewItem = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const content = e.target.inputbox.value;
+    console.log("newitem", content);
     posts.postCreate(content);
     e.target.inputbox.value = "";
   };

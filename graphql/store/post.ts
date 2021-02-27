@@ -44,7 +44,9 @@ class Posts {
   // post create method
   postCreate = (content) => {
     if (!content) return;
+    console.log("content", content);
     const result = [...this.data(), { ...this.getNextItem, content }];
+    console.log("content > getPosts", result);
     this.syncToLocalStorage(result);
     this.data(result);
   };
