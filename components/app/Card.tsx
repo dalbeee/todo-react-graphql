@@ -38,6 +38,12 @@ const Card = ({ post }: { post: IPost }) => {
     posts.postDelete(post.id);
   };
 
+  const convertTime = () => {
+    const time = Date.now() - post.created_At;
+    const convertMinutes = Math.floor(time / 1000 / 60);
+    return `${convertMinutes} 분 전 `;
+  };
+
   return (
     <>
       <Modal
@@ -106,6 +112,9 @@ const Card = ({ post }: { post: IPost }) => {
               del
             </button>
           </div>
+        </div>
+        <div className="flex justify-end font-semibold text-gray-700">
+          {convertTime()}
         </div>
       </div>
     </>
