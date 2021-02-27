@@ -13,15 +13,6 @@ export function ClientOnlyPortal({ children, selector }) {
   return mounted ? createPortal(children, ref.current) : null;
 }
 
-export const useModal = () => {
-  const [visible, setVisible] = useState(false);
-
-  return {
-    setVisible,
-    Modal: () => <Modal visible={visible} />,
-  };
-};
-
 const Modal = ({ title, visible, onConfirm, onCancel, children }) => {
   // console.log(isShow, visible);
 
