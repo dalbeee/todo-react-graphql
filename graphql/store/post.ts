@@ -44,33 +44,33 @@ class Posts {
   // post create method
   postCreate = (content) => {
     if (!content) return;
-    const result = [...posts.data(), { ...posts.getNextItem, content }];
+    const result = [...this.data(), { ...this.getNextItem, content }];
     this.syncToLocalStorage(result);
-    posts.data(result);
+    this.data(result);
   };
 
   // post update method
   postUpdate = (id, post: IPost) => {
-    const getPosts = posts.data();
+    const getPosts = this.data();
     const postIndex = getPosts.findIndex((i) => i.id === id);
 
     // slice array
     //   const f = getPosts.slice(0, postIndex);
     //   const g = getPosts.slice(postIndex + 1);
-    //   posts([...f, updatedPost, ...g]);
+    //   this([...f, updatedPost, ...g]);
 
     // use clonedeep
     getPosts[postIndex] = post;
     const result = cloneDeep(getPosts);
     this.syncToLocalStorage(result);
 
-    posts.data(result);
+    this.data(result);
   };
 
   // post delete method
   postDelete = (id) => {
-    const getPosts = posts.data().filter((item) => item.id !== id);
-    posts.data(getPosts);
+    const getPosts = this.data().filter((item) => item.id !== id);
+    this.data(getPosts);
   };
 }
 
